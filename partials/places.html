@@ -1,0 +1,118 @@
+<div class="page-header">
+   <h1>myPlaces</h1>
+</div>
+<div class="col-md-6 col-md-offset-3">
+<label>Search: <input ng-model="searchText"></label>
+<table st-table="myplaces" class="table table-striped col-md-4">
+  <thead>
+  <tr>
+    <th>Location</th>
+    <th>Rating</th>
+  </tr>
+  </thead>
+  <tbody>
+<tr st-select-row="row" st-select-mode="multiple" ng-repeat="place in myplaces| filter: searchText">
+    <td>{{place.title}}</td>
+    <td><input-stars max="5" ng-model="place.rating" readonly="readonly"></input-stars></td>
+    <td><button type="button" class="btn-info" data-toggle="modal" data-target="#viewdetails" ng-click="viewLocation(place)">Details</button></td>
+    <td><button type="button" class="btn-danger" ng-click="deleteLocation(place.id)">Remove</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<!-- Modal -->
+<div class="modal" id="viewdetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-model="selectedLocation">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+            <h4><img id="modal-marker-icon" src="/images/shortcut_places_marker.png"><strong>{{selectedPlace.title}}</strong></h4>
+         </div>
+         <div class="modal-body">
+            <table class="pull-left col-md-9">
+               <tbody>
+                  <tr class="table-details">
+                     <td class="loc-label-data h5"><strong>Address</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.address}} </td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Phone</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.phone_number}}</td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Price</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.price}}</td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Rating</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6"><input-stars max="5" ng-model="selectedPlace.rating" readonly="readonly"></input-stars></td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Website</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6"><a target="_blank" href="{{selectedPlace.website}}">Click here</a></td>
+                  </tr>
+                 <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Hours</strong></td>
+                     <td></td>
+                     <td class="loc-detail-data h6">
+                     <ul>
+                     <li ng-repeat="hour in selectedPlace.hours">{{hour}}</li>
+                     </ul></td>
+                  </tr>
+                 <tr class="table-details">
+                     <td class="h6"><strong>Reviews</strong></td>
+                     <td></td>
+                     <td>
+                     <div id="reviews" class="review-box">
+                       <ul>
+                         <li class="reviews" ng-repeat="review in selectedPlace.reviews">"{{review.text}} ({{review.rating}}/5)" <br>-- {{review.author_name}}, {{review.relative_time_description}}</li>
+                       </ul>
+                     </div>
+                     </div></td>
+                  </tr>
+               </tbody>
+            </table>
+            <div class="col-md-3">
+               <img src="{{selectedPlace.photo}}" class="img-thumbnail">
+            </div>
+            <div class="clearfix"></div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-success col-md-offset-1" data-toggle="modal" data-target="#sendtext" type="button">
+            Meet a friend here</button>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="sendtext" class="modal fade col-md-6 col-md-offset-3" role="dialog" style="z-index: 1600;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4>Hey, let's go somewhere!</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+    </div>
+      <div class="modal-body">
+      <select ng-model="selectedContact" ng-options="contact as (contact.firstname + ' ' + contact.lastname + ' (' + contact.phone + ')') for contact in contacts"></select>
+        <button data-toggle="modal" data-target="#qrcode" type="button" class="btn btn-default">Generate QR Code</button>
+        <button ng-click="sendText(selectedContact)" data-toggle="modal" data-target="#qrcode" type="button" class="btn btn-default">Generate QR Code</button>
+        <button data-dismiss="modal" type="submit" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="qrcode" class="modal fade col-md-6 col-md-offset-3" role="dialog" style="z-index: 1600;">
+  <div class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+   <span>Use a QR code reader app with your smart phone and send your myPlace invite!</span><button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+  </div>
+
+      <img src='https://api.qrserver.com/v1/create-qr-code/?size=590x590&amp;ecc=L&amp;qzone=1&amp;data=SMSTO%3A%2B1{{selectedContact.phone}}%3AHey, meet me at {{selectedPlace.title}}.  The address is {{selectedPlace.address}}.' alt="SMS QR code">
+  </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<form   class="col-md-4 col-md-offset-4">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" ng-model="myinfo.firstname">
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" ng-model="myinfo.lastname">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" ng-model="myinfo.email">
+  </div>
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input type="text" class="form-control" ng-model="myinfo.phonenumber">
+  </div>
+<button type="submit" ng-click="edit(); editUserDetails(myinfo);" class="btn-success">Save changes</button>
+<button type="submit" ng-click="edit()" class="btn-danger">Cancel</button>
+</form>
+<!-- <form ng-show="editing" class="col-md-4 col-md-offset-4">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" ng-model="myinfo.firstname" readonly>
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" ng-model="myinfo.lastname" readonly>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" ng-model="myinfo.email" readonly>
+  </div>
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input type="text" class="form-control" ng-model="myinfo.phonenumber" readonly>
+  </div>
+<button type="submit" ng-click="edit(); editUserDetails(myinfo);" class="btn-success">Save changes</button>
+<button type="submit" ng-click="edit()" class="btn-danger">Cancel</button>
+</form> -->

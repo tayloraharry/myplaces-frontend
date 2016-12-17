@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "userplaces": {
+      ".indexOn": "uid"
+    },
+    "users": {
+      ".indexOn": "uid"
+    }
+  }
+}

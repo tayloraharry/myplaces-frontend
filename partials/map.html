@@ -1,0 +1,82 @@
+<div class="row">
+  <div>
+    <input id="from"  type="text" placeholder="Enter location" class="col-md-3 col-md-offset-8" autocomplete="on">
+    <div class="col-sm-offset-1" ng-show="loading" id="spinner"><i class="fa fa-spinner fa-pulse fa-spin fa-5x fa-fw"></i></div>
+    <div id="map" ></div>
+    <div id="places" class="col-md-2">
+    <div class="card"  ng-repeat="marker in markers">
+      <!-- <img class="card-img-top" src="{{marker.photo}}" alt="Card image cap"> -->
+      <div>
+        <h5 class="card-title">{{marker.title}}</h5>
+        <button type="submit" ng-click="addLocationToMyPlaces(marker)" class="btn-success">Save</button>
+        <button type="submit" data-toggle="modal" data-target="#viewdetails" ng-click="viewLocation(marker); initializeDetailMap(marker.placeid)" class="btn-info" >Details</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="viewdetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-model="selectedLocation">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+            <h4><img id="modal-marker-icon" src="/images/shortcut_places_marker.png"><strong>{{selectedPlace.title}}</strong></h4>
+         </div>
+         <div class="modal-body">
+            <table class="pull-left col-md-9">
+               <tbody>
+                  <tr class="table-details">
+                     <td class="loc-label-data h5"><strong>Address</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.address}} </td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Phone</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.phone_number}}</td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Price</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6">{{selectedPlace.price}}</td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Rating</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6"><input-stars max="5" ng-model="selectedPlace.rating" readonly="readonly"></input-stars></td>
+                  </tr>
+                  <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Website</strong></td>
+                     <td> </td>
+                     <td class="loc-detail-data h6"><a target="_blank"  href="{{selectedPlace.website}}">Click here</a></td>
+                  </tr>
+                 <tr class="table-details">
+                     <td class="h5 loc-label-data"><strong>Hours</strong></td>
+                     <td></td>
+                     <td class="loc-detail-data h6">
+                     <ul>
+                     <li ng-repeat="hour in selectedPlace.hours">{{hour}}</li>
+                     </ul></td>
+                  </tr>
+                 <tr class="table-details">
+                     <td class="h6"><strong>Reviews</strong></td>
+                     <td></td>
+                     <td>
+                     <div id="reviews" class="review-box">
+                       <ul>
+                         <li class="reviews" ng-repeat="review in selectedPlace.reviews">"{{review.text}} ({{review.rating}}/5)" <br>-- {{review.author_name}}, {{review.relative_time_description}}</li>
+                       </ul>
+                     </div>
+                     </div></td>
+                  </tr>
+               </tbody>
+            </table>
+            <div class="col-md-3">
+               <img src="{{selectedPlace.photo}}" class="img-thumbnail">
+            </div>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+   </div>
+</div>
+

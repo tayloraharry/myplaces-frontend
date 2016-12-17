@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>myPlaces - powered by Google Maps</title>
+  <link rel="shortcut icon" type="text/css" href="/images/Paomedia-Small-N-Flat-Map-marker.ico">
+  <link rel="stylesheet" type="text/css" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/lib/bower_components/angular-input-stars-directive/angular-input-stars.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/lib/bower_components/alertifyjs/dist/css/alertify.css"> -->
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+<body ng-app="FrontEndCapstone">
+<div ng-include="'./partials/navbar.html'"></div>
+<div ng-view></div>
+<script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuKnsdnPnAApaTDXCDb7mWHSPEsllRa7c&libraries=places"></script>
+<script type="text/javascript" src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/lib/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="/lib/bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+<script type="text/javascript" src="/lib/bower_components/angular-input-stars-directive/angular-input-stars.js"></script>
+<script type="text/javascript" src="/lib/bower_components/alertifyjs/dist/js/alertify.js"></script>
+<script type="text/javascript" src="/lib/bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="/javascripts/app.js"></script>
+<script type="text/javascript" src="/javascripts/AppConstants.js"></script>
+<script type="text/javascript" src="/javascripts/AppConfig.js"></script>
+<script type="text/javascript" src="/javascripts/factories/AuthFactory.js"></script>
+<script type="text/javascript" src="/javascripts/factories/UserFactory.js"></script>
+<script type="text/javascript" src="/javascripts/factories/GoogleMapsFactory.js"></script>
+<script type="text/javascript" src="/javascripts/factories/ContactsFactory.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/AuthCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/NavCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/MapCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/PlacesCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/ContactsCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/ProfileCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+ul {
+  list-style-type: none;
+  padding: 0; }
+
+.table-details {
+  padding-top: 1em; }
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -2; }
+
+#spinner {
+  position: fixed;
+  top: 50%;
+  left: 48%;
+  z-index: 1; }
+
+#reviews {
+  height: 200px; }
+
+.review-box {
+  overflow: auto; }
+
+.reviews {
+  padding-bottom: 2em; }
+
+#from {
+  position: absolute;
+  top: 70px;
+  right: 30px; }
+
+#contacts-container {
+  border: .2em solid black; }
+
+.loc-label-data {
+  padding-right: .5em; }
+
+.loc-label-data,
+.loc-detail-data {
+  padding-bottom: 1em; }
+
+#places {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 50px;
+  background-color: lightgrey;
+  border-right: 3px solid black;
+  color: black;
+  overflow: auto; }
+
+.card {
+  border: 1px solid black;
+  margin-top: 1em;
+  padding: .5em;
+  background-color: #F9FDFF; }
+
+.card-img-top {
+  border: .2em solid black;
+  text-align: center;
+  width: 100%;
+  height: 10em; }
+
+.google-logo {
+  height: 70px;
+  width: 100px; }
+
+.google-logo-rating-modal {
+  height: 65px;
+  width: 85px; }
+
+#modal-marker-icon {
+  height: 35px;
+  width: 30px; }
+
+.row {
+  padding-top: 50px; }
+
+.card-header {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; }

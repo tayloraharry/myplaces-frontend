@@ -1,0 +1,97 @@
+<div class="page-header">
+   <h1>myContacts</h1>
+</div>
+<div class="col-md-6 col-md-offset-3">
+<h5 class="col-md-6">Search contacts: <input ng-model="searchText"></h5>
+<button class="btn-success col-md-4 col-md-offset-2" data-toggle="modal" data-target="#addContact" type="button">New Contact</button>
+<table id="contacts-container" st-table="contacts" class="table table-striped">
+  <thead>
+  <tr>
+    <th>First</th>
+    <th>Last</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+<tr st-select-row="row" st-select-mode="multiple" ng-repeat="contact in contacts| filter: searchText">
+    <td>{{contact.firstname}}</td>
+    <td>{{contact.lastname}}</td>
+    <td>{{contact.phone}}</td>
+    <td>{{contact.email}}</td>
+    <td><button class="btn-info col-md-4" ng-click="viewContact(contact)" data-toggle="modal" data-target="#editContact" type="button">
+            Edit</button>
+    <button type="button" class="btn-danger col-md-6 col-md-offset-1" ng-click="deleteContact(contact.id)">Delete</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="editContact" class="modal fade col-md-6 col-md-offset-3" role="dialog" style="z-index: 1600;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4>Edit Contact</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+    </div>
+      <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text" class="form-control" ng-model="selectedContact.firstname">
+        </div>
+        <div class="form-group">
+          <label>Last Name:</label>
+          <input type="text" class="form-control" ng-model="selectedContact.lastname">
+        </div>
+        <div class="form-group">
+          <label>Phone:</label>
+          <input type="tel" class="form-control" ng-model="selectedContact.phone">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="text" class="form-control" ng-model="selectedContact.email">
+        </div>
+        <button ng-click="editContact(selectedContact)" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-success">Save Changes</button>
+        <button data-dismiss="modal" type="submit" class="btn btn-default">Cancel</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="addContact" class="modal fade col-md-6 col-md-offset-3" role="dialog" style="z-index: 1600;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4>New Contact</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+    </div>
+      <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text" class="form-control" ng-model="newContact.firstname">
+        </div>
+        <div class="form-group">
+          <label>Last Name:</label>
+          <input type="text" class="form-control" ng-model="newContact.lastname">
+        </div>
+        <div class="form-group">
+          <label>Phone:</label>
+          <input type="tel" class="form-control" ng-model="newContact.phone">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="text" class="form-control" ng-model="newContact.email">
+        </div>
+        <button ng-click="addContact(newContact)" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-success">Add Contact</button>
+        <button data-dismiss="modal" type="submit" class="btn btn-default">Cancel</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>

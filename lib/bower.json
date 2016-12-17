@@ -1,0 +1,26 @@
+{
+  "name": "Pinteresting",
+  "homepage": "https://github.com/nss-evening-cohort-04/pinteresting-eggers-cant-be-cheesers",
+  "description": "group project",
+  "main": "",
+  "authors": [
+    "Taylor Harry"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "angular": "1.5.8",
+    "angular-route": "1.5.8",
+    "sticky-kit": "^1.1.2",
+    "angular-twilio": "*",
+    "alertifyjs": "^1.0.11"
+  }
+}

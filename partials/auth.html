@@ -1,0 +1,17 @@
+<div class="container col-md-4 col-md-offset-4">
+  <div class="row">
+  <form ng-show="loginContainer">
+    <div class="form-group">
+      <label class="col-xs-offset-1">EMAIL</label>
+      <input type="email" class="col-xs-10 col-xs-offset-1" ng-model="userAuth.email" required autofocus>
+    </div>
+    <div class="form-group">
+      <label class="col-xs-offset-1">PASSWORD</label>
+      <input type="password" class="col-xs-10 col-xs-offset-1" ng-model="userAuth.password" required>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-md col-xs-5 col-xs-offset-1" ng-click="loginUser(userAuth)">Sign-In</button>
+      <button class="btn btn-success btn-md col-xs-5" ng-click="registerUser(userAuth)">Create Account</button>
+    </div>
+  </div>
+</div>
